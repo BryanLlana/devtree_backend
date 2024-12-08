@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 import colors from 'colors'
+import morgan from 'morgan'
 
 interface IPropsServer {
   port: number
@@ -20,6 +21,8 @@ export class Server {
   public start () {
     this.app.use(express.json())
     this.app.use(express.urlencoded({extended: true}))
+
+    this.app.use(morgan('dev'))
 
     this.app.use(this.routes)
 

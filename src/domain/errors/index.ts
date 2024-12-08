@@ -16,6 +16,10 @@ export class CustomError extends Error{
     return new CustomError(400, message)
   }
 
+  public static unauthorized(message: string) {
+    return new CustomError(403, message)
+  }
+
   public static internalServer() {
     return new CustomError(500, 'Internal server error')
   }

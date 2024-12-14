@@ -1,3 +1,4 @@
+import { CorsAdapter } from "./config/adapter/cors.adapter"
 import { envs } from "./config/env"
 import { MongoDatabase } from "./data/mongo/mongo.database"
 import { AppRoutes } from "./presentation/routes"
@@ -8,7 +9,7 @@ const main = async () => {
     mongoUrl: envs.MONGO_URL,
     dbName: envs.DB_NAME
   })
-  const server = new Server({port: envs.PORT, routes: AppRoutes.getRoutes()})
+  const server = new Server({port: envs.PORT, routes: AppRoutes.getRoutes(), cors: CorsAdapter.create()})
   server.start()
 }
 
